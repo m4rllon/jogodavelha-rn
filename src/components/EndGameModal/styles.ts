@@ -9,7 +9,7 @@ export const Container = styled.View`
     margin-left: 32px;
     margin-right: 32px;
 
-    border-radius: 16px;
+    border-radius: 8px;
 
     padding: 16px;
 

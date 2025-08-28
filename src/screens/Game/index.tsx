@@ -63,7 +63,7 @@ export function Game(){
             player={player}
             changePlayer={handleChangePlayer}/>
             <RestartButton
-            label="Recomençar"
+            label="RECOMEÇAR"
             onPress={handleRestartGame}/>
         </Main>
         <Footer>
@@ -81,4 +81,4 @@ export function Game(){
             playerWin={player}/>
         </Modal>
     </Container>
-}
+} 

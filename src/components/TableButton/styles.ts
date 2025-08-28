@@ -1,15 +1,16 @@
-import { TouchableOpacity } from "react-native";
+import { processColor, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 
 interface StylesProps{
+    $x?: number;
+    $y?: number;
     $tag?: string;
 }
 
 export const Button = styled(TouchableOpacity)<StylesProps>`
-    width: 95px;
+    width: 104px;
     height: 95px;
-    margin: 4px;
-    
+
     background-color: ${
         props => {
             if(props.$tag === 'X') return props.theme.colors.blue_bg
@@ -17,9 +18,26 @@ export const Button = styled(TouchableOpacity)<StylesProps>`
             else return 'transparent'
         }
     };
-
-    border-width: 1.5px;
-    border-radius: 16px;
+    ${
+        props => {
+            if(props.$x === 0) return 'border-right-width: 1px;'
+            else if(props.$x === 2) return 'border-left-width: 1px;'
+        }
+    }
+    ${
+        props => {
+            if(props.$y === 0) return 'border-bottom-width: 1px;'
+            if(props.$y === 2) return 'border-top-width: 1px;'
+        }
+    }
+    ${
+        props => {
+            if(props.$x === 0 && props.$y === 0) return 'border-top-left-radius: 8px;'
+            else if(props.$x === 0 && props.$y === 2) return 'border-bottom-left-radius: 8px;'
+            else if(props.$x === 2 && props.$y === 0) return 'border-top-right-radius: 8px;'
+            else if(props.$x === 2 && props.$y === 2) return 'border-bottom-right-radius: 8px;'
+        }
+    }
     border-color: ${
         props => {
             if(props.$tag === 'X') return props.theme.colors.blue_icon

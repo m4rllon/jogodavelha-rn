@@ -24,7 +24,6 @@ export function EndGameModal({playerWin, restartGame}:EndGameModalProps){
 
         <RestartButton
         onPress={restartGame}
-        label="Jogar novamente"
-        background="#212121ff"/>
+        label="JOGAR NOVAMENTE"/>
     </Container>
 }

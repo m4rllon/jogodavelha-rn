@@ -11,17 +11,18 @@ export const Button = styled(TouchableOpacity).attrs({
     width: 100%;
     padding: 14px;
     
-    border-radius: 16px;
+    border-radius: 8px;
 
     background-color: ${
-        props => props.$background ? props.$background : 'aliceblue'
+        props => props.$background ? props.$background : '#3249CB'
     };
 `
 
 export const ButtonText = styled.Text<StylesPros>`
     color: ${
-        props => props.$background ? props.theme.colors.text_primary : 'black'
+        props => props.$background ? props.theme.colors.text_primary : 'white'
     };
     font-size: 16px;
     text-align: center;
+    font-weight: bold;
 `

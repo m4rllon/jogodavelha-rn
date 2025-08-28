@@ -8,7 +8,7 @@ export const Container = styled.View`
     width: 100%;
     flex: 1;
 
-    background-color: ${({theme}) => theme.colors.background_ass};
+    background-color: ${({theme}) => theme.colors.background_primary};
 
     justify-content: center;
     align-items: center;

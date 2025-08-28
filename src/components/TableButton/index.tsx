@@ -30,7 +30,9 @@ export function TableButton({x, y, player, handleChangeTable, gameStatus}: Table
 
     return <Button 
     onPress={() => handleChoosePosition()}
-    $tag={buttonTag}>
+    $tag={buttonTag}
+    $x={x}
+    $y={y}>
         <TextButton
         $tag={buttonTag}>
             {buttonTag}
