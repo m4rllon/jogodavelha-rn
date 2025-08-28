@@ -3,7 +3,6 @@ import {
     Container,
     Header,
     TitleText,
-    PlayerTurnCard,
     Main,
     Footer,
     PlayerTurnTextCard,
@@ -47,15 +46,13 @@ export function Game(){
     return <Container>
         <Header>
             <TitleText>
-                JOGO DA VELHA
-            </TitleText>
-            <PlayerTurnCard
-            $player={player}>
+                It's {' '}
                 <PlayerTurnTextCard
                 $player={player}>
-                    Vez do jogador {player === 1 ? 'X' : 'O'}
+                    {player === 1 ? 'X' : 'O'}
                 </PlayerTurnTextCard>
-            </PlayerTurnCard>
+                {' '} movements
+            </TitleText>
         </Header>
 
         <Main>
