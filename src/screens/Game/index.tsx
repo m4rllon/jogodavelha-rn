@@ -51,7 +51,7 @@ export function Game(){
                 $player={player}>
                     {player === 1 ? 'X' : 'O'}
                 </PlayerTurnTextCard>
-                {' '} movements
+                {' '} movement
             </TitleText>
         </Header>
 
@@ -69,7 +69,7 @@ export function Game(){
         </Main>
         <Footer>
             <AuxText>
-                Criado por m4rllon!
+                Created by m4rllon!
             </AuxText>
         </Footer>
 
