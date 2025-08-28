@@ -17,13 +17,13 @@ export const Container = styled.View`
     align-items: center;
     gap: 16px;
 
-    background-color: aliceblue;
+    background-color: ${({theme}) => theme.colors.background_secondary};
 
     height: 200px;
 `
 
 export const Title = styled.Text`
-    color: ${({theme}) => theme.colors.background_secondary};
+    color: aliceblue;
     font-size: 24px;
     font-weight: 900;
     text-align: center;
