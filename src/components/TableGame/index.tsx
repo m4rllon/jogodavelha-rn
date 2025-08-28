@@ -7,7 +7,7 @@ import { TableButton } from "../TableButton";
 interface TableGameProps{
     player: number;
     changePlayer: () => void;
-    finishGame: () => void;
+    finishGame: (status:number) => void;
     gameStatus: boolean;
     table: Array<Number[]>;
     setTable: Dispatch<SetStateAction<Array<Number[]>>>;
@@ -38,17 +38,26 @@ export function TableGame({player, changePlayer, gameStatus, finishGame, table, 
         }
 
         for(let i = 0; i < 3; i++){
-            if(verifyColumn(i)) return true
-            else if(verifyRow(i)) return true
-            else if(verifyDiagonal()) return true
+            if(verifyColumn(i)) return 1
+            else if(verifyRow(i)) return 1
+            else if(verifyDiagonal()) return 1
         }
-        return false
+
+        for(let i = 0; i < 3; i++){
+            for(let j = 0; j < 3; j++){
+                if(table[i][j] === -1) return 0
+            }
+        }
+
+        return -1
     }
 
     useEffect(()=>{
-        if(verifyTable(player)){
-            finishGame()
-        } else {
+        let controller = verifyTable(player) 
+        if(controller !== 0){
+            finishGame(controller)
+        }
+        else {
             changePlayer()
         }
     }, [table])

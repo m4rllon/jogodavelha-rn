@@ -26,8 +26,12 @@ export function Game(){
         setplayer( prev => prev === 1 ? 0 : 1)
     }
 
-    const finishGame = () => {
-        setModalStatus(true)
+    const finishGame = (status:number) => {
+        if(status === 1) setModalStatus(true)
+        else {
+            setplayer(-1)
+            setModalStatus(true)
+        }
     }
 
     const handleRestartGame = () => {

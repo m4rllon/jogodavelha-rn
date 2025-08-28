@@ -13,17 +13,28 @@ interface EndGameModalProps{
 
 export function EndGameModal({playerWin, restartGame}:EndGameModalProps){
     const namePlayerWin = playerWin === 1 ? 'X' : 'O'
-
-    return <Container>
-        <Title>
-            VITÓRIA DO JOGADOR {' '} 
+    if(playerWin !== -1){
+        return <Container>
+        <Title> 
             <TextPlayer $player={playerWin}>
                 {namePlayerWin}
             </TextPlayer>
+            {' '} victory
         </Title>
 
         <RestartButton
         onPress={restartGame}
-        label="JOGAR NOVAMENTE"/>
+        label="RESTART"/>
     </Container>
+    } else {
+        return <Container>
+        <Title>
+            Draw! Try again.
+        </Title>
+
+        <RestartButton
+        onPress={restartGame}
+        label="RESTART"/>
+    </Container>
+    } 
 }

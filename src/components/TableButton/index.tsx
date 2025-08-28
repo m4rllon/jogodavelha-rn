@@ -14,6 +14,7 @@ interface TableButtonProps{
 
 export function TableButton({x, y, player, handleChangeTable, gameStatus}: TableButtonProps){
     const [buttonTag, setButtonTag] = useState('')
+    const [buttonController, setButtonController] = useState(false)
     
     const getPlayerTag = () => {
             return player === 1 ? 'X' : 'O'
@@ -22,13 +23,16 @@ export function TableButton({x, y, player, handleChangeTable, gameStatus}: Table
     const handleChoosePosition = () => {
         handleChangeTable(x, y, player)
         setButtonTag(getPlayerTag())
+        setButtonController(true)
     }
 
     useEffect(() => {
         setButtonTag('')
+        setButtonController(false)
     }, [gameStatus])
 
     return <Button 
+    disabled={buttonController}
     onPress={() => handleChoosePosition()}
     $tag={buttonTag}
     $x={x}
