@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { 
     Button,
     TextButton,
@@ -9,10 +9,12 @@ interface TableButtonProps{
     y: number;
     player: number;
     handleChangeTable: (x:number, y:number, player:number) => void;
+    gameStatus: boolean;
 }
 
-export function TableButton({x, y, player, handleChangeTable}: TableButtonProps){
+export function TableButton({x, y, player, handleChangeTable, gameStatus}: TableButtonProps){
     const [buttonTag, setButtonTag] = useState('')
+    
     const getPlayerTag = () => {
             return player === 1 ? 'X' : 'O'
     }
@@ -21,6 +23,10 @@ export function TableButton({x, y, player, handleChangeTable}: TableButtonProps)
         handleChangeTable(x, y, player)
         setButtonTag(getPlayerTag())
     }
+
+    useEffect(() => {
+        setButtonTag('')
+    }, [gameStatus])
 
     return <Button 
     onPress={() => handleChoosePosition()}

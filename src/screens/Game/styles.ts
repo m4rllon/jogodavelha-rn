@@ -81,5 +81,5 @@ export const Footer = styled.View`
 `
 export const AuxText = styled.Text`
     color: ${({theme}) => theme.colors.text_span};
-    font-size: 14;
+    font-size: 14px;
 `

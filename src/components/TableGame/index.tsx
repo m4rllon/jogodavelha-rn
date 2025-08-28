@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { 
     Container,
  } from "./styles";
@@ -7,14 +7,13 @@ import { TableButton } from "../TableButton";
 interface TableGameProps{
     player: number;
     changePlayer: () => void;
+    finishGame: () => void;
+    gameStatus: boolean;
+    table: Array<Number[]>;
+    setTable: Dispatch<SetStateAction<Array<Number[]>>>;
 }
 
-export function TableGame({player, changePlayer}:TableGameProps){
-    const [gameStatus, setGameStatus] = useState(false)
-    const [table, setTable] = useState<Array<Array<Number>>>(
-        [[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]]
-    )
-
+export function TableGame({player, changePlayer, gameStatus, finishGame, table, setTable}:TableGameProps){
     const handleChangeTable = (x:number, y:number, player:number) => {
         const newTable = table.slice()
         newTable[y][x] = player
@@ -42,14 +41,13 @@ export function TableGame({player, changePlayer}:TableGameProps){
             if(verifyColumn(i)) return true
             else if(verifyRow(i)) return true
             else if(verifyDiagonal()) return true
-            return false
         }
+        return false
     }
 
     useEffect(()=>{
         if(verifyTable(player)){
-            setGameStatus(true)
-            console.log('FIM')
+            finishGame()
         } else {
             changePlayer()
         }
@@ -60,46 +58,55 @@ export function TableGame({player, changePlayer}:TableGameProps){
         x={0}
         y={0}
         player={player}
-        handleChangeTable={handleChangeTable}/>
-        <TableButton
-        x={0}
-        y={1}
-        player={player}
-        handleChangeTable={handleChangeTable}/>
-        <TableButton
-        x={0}
-        y={2}
-        player={player}
-        handleChangeTable={handleChangeTable}/>
+        handleChangeTable={handleChangeTable}
+        gameStatus={gameStatus}/>
         <TableButton
         x={1}
         y={0}
         player={player}
-        handleChangeTable={handleChangeTable}/>
-        <TableButton
-        x={1}
-        y={1}
-        player={player}
-        handleChangeTable={handleChangeTable}/>
-        <TableButton
-        x={1}
-        y={2}
-        player={player}
-        handleChangeTable={handleChangeTable}/>
+        handleChangeTable={handleChangeTable}
+        gameStatus={gameStatus}/>
         <TableButton
         x={2}
         y={0}
         player={player}
-        handleChangeTable={handleChangeTable}/>
+        handleChangeTable={handleChangeTable}
+        gameStatus={gameStatus}/>
+        <TableButton
+        x={0}
+        y={1}
+        player={player}
+        handleChangeTable={handleChangeTable}
+        gameStatus={gameStatus}/>
+        <TableButton
+        x={1}
+        y={1}
+        player={player}
+        handleChangeTable={handleChangeTable}
+        gameStatus={gameStatus}/>
         <TableButton
         x={2}
         y={1}
         player={player}
-        handleChangeTable={handleChangeTable}/>
+        handleChangeTable={handleChangeTable}
+        gameStatus={gameStatus}/>
+        <TableButton
+        x={0}
+        y={2}
+        player={player}
+        handleChangeTable={handleChangeTable}
+        gameStatus={gameStatus}/>
+        <TableButton
+        x={1}
+        y={2}
+        player={player}
+        handleChangeTable={handleChangeTable}
+        gameStatus={gameStatus}/>
         <TableButton
         x={2}
         y={2}
         player={player}
-        handleChangeTable={handleChangeTable}/>
+        handleChangeTable={handleChangeTable}
+        gameStatus={gameStatus}/>
     </Container>
 }

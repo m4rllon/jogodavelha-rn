@@ -14,7 +14,7 @@ export const Button = styled(TouchableOpacity)<StylesProps>`
         props => {
             if(props.$tag === 'X') return props.theme.colors.blue_bg
             else if(props.$tag === 'O') return props.theme.colors.red_bg
-            else return ''
+            else return 'transparent'
         }
     };
 
